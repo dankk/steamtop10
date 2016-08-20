@@ -10,7 +10,6 @@
 .txt{
 	display: inline-block;
 	position: relative;
-	float: right;
 	bottom: 30px;
 	left: 5px;
 }
