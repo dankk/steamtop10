@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <!-- Page specific content goes here -->
+	<form action="/steam/results/" method="post">
+		{% csrf_token %}
+		<input type="text" name="steamid" id="input" placeholder="Profile ID/Steam64 ID" value="{{ steamid }}"><br>
+		<input type="submit" value="Go"><br>
+	</form>
+
+	<script>
+		document.getElementById("input").value = '';
+	</script>
+    </body>
+</html>

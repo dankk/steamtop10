@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'steam/results.css' %}" />
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Results</title>
+    </head>
+    <body>
+	<a href="{% url 'home' %}"><button type="button">New Search</button></a>
+
+	<div id="container">
+	</div>	
+	
+	<script type="text/javascript">
+		var data = {{ json_data|safe }};
+		var container = document.getElementById('container');
+		for (i=0; i<data.length; i++){
+			var img = document.createElement('IMG');
+			img.src = "http://media.steampowered.com/steamcommunity/public/images/apps/" + data[i].appid + "/" + data[i].img_logo_url + ".jpg";
+			var div = document.createElement('div');
+			div.id = 'div' + i;
+			div.className = 'img';
+			container.appendChild(div);
+			div.appendChild(img);
+
+			var txtdiv = document.createElement('div');
+			txtdiv.id = 'txtdiv' + i;
+			txtdiv.className = 'txt';
+			container.appendChild(txtdiv);
+			document.getElementById('txtdiv'+i).innerHTML += " " + ((data[i].playtime_forever)/60).toFixed(1) + " Hours Played";
+		}
+	</script>
+    </body>
+</html>
