@@ -13,9 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -24,7 +22,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '*v(-5mo08351h_0n13v_psmrqdhb-k*4mp#(8^zm&zq0t*54ry'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -116,30 +114,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
 
-# heroku stuff
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, '/steam/static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'steam/static/'),)
 
-
+# heroku stuff
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
-
-DEBUG = False
 
 try:
     from .local_settings import *
