@@ -5,6 +5,7 @@
 .img{
 	display: inline-block;
 	outline: white solid 1px;
+	float: left;
 }
 
 .txt{
