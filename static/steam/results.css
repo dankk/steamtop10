@@ -1,15 +1,14 @@
 #container{
-	width: 500px;
+	text-align: center;
 }
 
 .img{
-	display: inline-block;
+	display: table;
 	outline: white solid 1px;
 }
 
 .txt{
-	display: inline-block;
 	position: relative;
-	bottom: 30px;
-	left: 5px;
+	bottom: 45px;
+	right: 250px;
 }
